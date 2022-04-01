@@ -65,22 +65,24 @@ export class CurrencyConvertor {
 
   render() {
     return (
-      <Fragment>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input type="number" min={0} step={0.1} onInput={this.handleChangeAmount}>{this.amount}</input>
-            <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('from', curr)}></currencies-dropdown>
-            <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('to', curr)}></currencies-dropdown>
-            <input class='submit-button' type="submit" value="SUBMIT" />
-          </form>
-        </div>
+      <div class="convertor-container">
+        <form onSubmit={this.handleSubmit}>
+          <div class="currency-inputs">
+            <input class="currency-value" type="number" min={0} step={0.1} onInput={this.handleChangeAmount}>{this.amount}</input>
+            <div class="currency-code">
+              <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('from', curr)}></currencies-dropdown>
+              <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('to', curr)}></currencies-dropdown>
+            </div>
+          </div>
+          <input class='submit-button' type="submit" value="SUBMIT" />
+        </form>
         {this.exchangedValue &&
           <div>
             {this.valueContainer(this.exchangedValue?.fromCurrName, this.exchangedValue?.fromValue, this.exchangedValue?.fromCurrCode)}
             {this.valueContainer(this.exchangedValue?.toCurrName, this.exchangedValue?.toValue, this.exchangedValue?.toCurrCode)}
           </div>
         }
-      </Fragment>
+      </div>
     )
   }
 }
