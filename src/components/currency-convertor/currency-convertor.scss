@@ -1,0 +1,35 @@
+.submit-button {
+  box-sizing: border-box;
+  background-color: #8360c3;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0px 0px 10px 1px #8360c3;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  width: 120px;
+  margin: 30px;
+  outline: none;
+  transition: linear 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 2px #8360c3;
+  }
+}
+
+input {
+  box-sizing: border-box;
+  padding: 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+  width: 200px;
+  margin: 30px 100px 30px 0;
+  box-shadow: 0px 0px 10px 1px lightgrey;
+  outline: none;
+  transition: linear 0.2s;
+
+  &:focus {
+    box-shadow: 0px 0px 10px 1px #8360c3;
+  }
+}
