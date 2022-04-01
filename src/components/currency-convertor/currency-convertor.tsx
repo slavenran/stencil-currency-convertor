@@ -1,4 +1,4 @@
-import { h, Component, State, Watch, Fragment } from "@stencil/core";
+import { h, Component, State, Watch } from "@stencil/core";
 import { getExchangedValue } from "../../utils/apiCalls/apiCalls";
 import { defaultCurrency } from "../../utils/utils";
 
