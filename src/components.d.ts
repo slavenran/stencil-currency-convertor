@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CurrenciesDropdown {
         "changeCurrency": Function;
+        "defaultCurrency": string;
     }
     interface CurrencyConvertor {
     }
@@ -54,6 +55,7 @@ declare global {
 declare namespace LocalJSX {
     interface CurrenciesDropdown {
         "changeCurrency"?: Function;
+        "defaultCurrency"?: string;
     }
     interface CurrencyConvertor {
     }

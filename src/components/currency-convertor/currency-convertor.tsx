@@ -1,6 +1,6 @@
 import { h, Component, State, Watch } from "@stencil/core";
 import { getExchangedValue } from "../../utils/apiCalls/apiCalls";
-import { defaultCurrency } from "../../utils/utils";
+import { Currencies } from "../../utils/utils";
 
 type ExchangeObject = {
   fromCurrName: string,
@@ -20,8 +20,8 @@ type ExchangeObject = {
 export class CurrencyConvertor {
 
   @State() amount: number = 0;
-  @State() from: string = defaultCurrency;
-  @State() to: string = defaultCurrency;
+  @State() from: string = Currencies.EUR;
+  @State() to: string = Currencies.USD;
   @State() exchangedValue: ExchangeObject;
 
   @Watch('amount')
@@ -29,10 +29,10 @@ export class CurrencyConvertor {
     console.log(currValue);
   }
 
-  private valueContainer = (currency, value, currCode) => <div>
-    <div>{currency}</div>
-    <div>
-      {value}<span>{currCode}</span>
+  private valueContainer = (currency, value, currCode) => <div class="result-details">
+    <h2 class="currency-title">{currency}</h2>
+    <div class="currency-result">
+      {value} <span>{currCode}</span>
     </div>
   </div>;
 
@@ -68,17 +68,18 @@ export class CurrencyConvertor {
       <div class="convertor-container">
         <form onSubmit={this.handleSubmit}>
           <div class="currency-inputs">
-            <input class="currency-value" type="number" min={0} step={.01} onInput={this.handleChangeAmount}>{this.amount}</input>
+            <input class="currency-value" placeholder="Amount" type="number" min={0} step={.01} onInput={this.handleChangeAmount}>{this.amount}</input>
             <div class="currency-code">
-              <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('from', curr)}></currencies-dropdown>
-              <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('to', curr)}></currencies-dropdown>
+              <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('from', curr)} defaultCurrency={this.from}></currencies-dropdown>
+              <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('to', curr)} defaultCurrency={this.to}></currencies-dropdown>
             </div>
           </div>
           <input class='submit-button' type="submit" value="SUBMIT" />
         </form>
         {this.exchangedValue &&
-          <div>
+          <div class="results-container">
             {this.valueContainer(this.exchangedValue?.fromCurrName, this.exchangedValue?.fromValue, this.exchangedValue?.fromCurrCode)}
+            <div class="equals">=</div>
             {this.valueContainer(this.exchangedValue?.toCurrName, this.exchangedValue?.toValue, this.exchangedValue?.toCurrCode)}
           </div>
         }

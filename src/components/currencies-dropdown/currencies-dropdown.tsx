@@ -1,6 +1,5 @@
 import { h, Component, State, Watch, Prop } from "@stencil/core";
 import { getCurrencies } from "../../utils/apiCalls/apiCalls";
-import { defaultCurrency } from "../../utils/utils";
 
 export interface Currency {
   currency: string;
@@ -14,6 +13,7 @@ export interface Currency {
 export class CurrenciesDropdown {
 
   @Prop() changeCurrency: Function;
+  @Prop() defaultCurrency: string = null;
 
   @State() currencies: Array<string> = [];
   @State() pickedCurrency: string = '';
@@ -40,7 +40,7 @@ export class CurrenciesDropdown {
   render() {
     return (
       <select class={this.pickedCurrency !== '' ? '' : 'placeholder'} name="currencies" onChange={this.selectOnChange}>
-        <option value="" selected disabled hidden>{defaultCurrency}</option>
+        <option value="" selected disabled hidden>{this.defaultCurrency}</option>
         {
           this.currencies.map((currency) => <option key={currency} value={currency}>{currency}</option>)
         }
