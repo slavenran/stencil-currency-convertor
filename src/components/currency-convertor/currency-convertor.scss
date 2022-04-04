@@ -78,4 +78,50 @@ input[type=number] {
       }
     }
   }
+
+  .results-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px lightgrey inset;
+    min-width: 260px;
+    margin-top: 20px;
+
+    .equals {
+      position: absolute;
+      top: calc(50% - 16px);
+      font-weight: 900;
+      font-size: 28px;
+      color: lightgrey;
+    }
+
+    .result-details {
+      width: 40%;
+      min-width: 200px;
+      margin: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 1px lightgrey;
+
+      .currency-title {
+        color: grey;
+        margin-top: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &::after {
+          content: ":";
+        }
+      }
+
+      .currency-result {
+        font-size: 20px;
+        font-weight: 600;
+        color: grey;
+      }
+    }
+  }
 }
