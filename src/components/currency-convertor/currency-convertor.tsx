@@ -68,7 +68,7 @@ export class CurrencyConvertor {
       <div class="convertor-container">
         <form onSubmit={this.handleSubmit}>
           <div class="currency-inputs">
-            <input class="currency-value" type="number" min={0} step={0.1} onInput={this.handleChangeAmount}>{this.amount}</input>
+            <input class="currency-value" type="number" min={0} step={.01} onInput={this.handleChangeAmount}>{this.amount}</input>
             <div class="currency-code">
               <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('from', curr)}></currencies-dropdown>
               <currencies-dropdown changeCurrency={(curr) => this.handleChangeCurrency('to', curr)}></currencies-dropdown>
